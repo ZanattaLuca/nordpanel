@@ -1,0 +1,24 @@
+{
+  "name": "nordpanel",
+  "version": "1.0.0",
+  "description": "NordPanel is a lightweight graphical frontend for the official NordVPN CLI on Linux.   It lets you connect, disconnect and switch countries using a simple desktop panel instead of typing commands in the terminal.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZanattaLuca/nordpanel.git"
+  },
+  "keywords": [],
+  "author": "Luca Zanatta",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ZanattaLuca/nordpanel/issues"
+  },
+  "homepage": "https://github.com/ZanattaLuca/nordpanel#readme",
+  "devDependencies": {
+    "electron": "^39.2.4"
+  }
+}
