@@ -2,7 +2,7 @@
   "name": "nordpanel",
   "version": "1.0.0",
   "description": "NordPanel is a lightweight graphical frontend for the official NordVPN CLI on Linux.   It lets you connect, disconnect and switch countries using a simple desktop panel instead of typing commands in the terminal.",
-  "main": "main.js",
+  "main": "src/main/main.js",
   "scripts": {
     "start": "electron ."
   },
