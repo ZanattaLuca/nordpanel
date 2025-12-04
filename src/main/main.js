@@ -15,7 +15,8 @@ function createWindow() {
 
   win.webContents.openDevTools();
   
-  win.loadFile(path.join(__dirname, '../renderer/index.html'));
+  //win.loadFile(path.join(__dirname, '../renderer/index.html'));
+  win.loadURL('http://localhost:4200');
 }
 
 app.whenReady().then(() => {

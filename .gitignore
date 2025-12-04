@@ -1,5 +1,19 @@
 # dependencies
 node_modules/
+ui/node_modules/
 
 # editor stuff
 .vscode/
+
+# Miscellaneous
+.angular
+ui/.angular
+ui/coverage
+
+# Compiled output
+dist
+ui/dist
+
+# log vari
+npm-debug.log*
+*.log
