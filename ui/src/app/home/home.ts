@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NordvpnService } from '../nordvpn.service';
 
 @Component({
@@ -8,12 +8,11 @@ import { NordvpnService } from '../nordvpn.service';
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly title = signal('ui');
 
   countries = '';
   account = '';
 
-  constructor(private nordvpn: NordvpnService) {}
+  constructor(private nordvpn: NordvpnService, private cdr: ChangeDetectorRef) {}
 
   showCountries() {
     this.countries = 'Running "nordvpn countries"...';
@@ -21,7 +20,7 @@ export class Home {
     this.nordvpn.getCountries().subscribe({
       next: (result) => {
         this.countries = result;
-        console.log('Countries:', result);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.countries = 'Error: ' + err;
@@ -37,6 +36,7 @@ export class Home {
       next: (result) => {
         this.account = result;
         console.log('Account:', result);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.account = 'Error: ' + err;
