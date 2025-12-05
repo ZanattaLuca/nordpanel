@@ -1,1 +1,30 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="topbar" color="primary">
+
+<div class="logo-wrapper">
+    <svg
+      class="logo"
+      viewBox="0 0 40 40"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M4.196 32C1.792 28.564.5 24.403.5 20.161.5 9.021 9.184 0 19.885 0c10.7 0 19.385 9.02 19.385 20.161 0 4.242-1.293 8.403-3.697 11.839L26.27 16.268l-.905 1.584.905 4.403-6.384-11.382-3.955 6.953.93 4.429-3.36-5.96L4.197 32z"
+      />
+    </svg>
+    <span class="brand-text">NordPanel</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button
+    mat-icon-button
+    class="settings-btn"
+    aria-label="Apri impostazioni"
+  >
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
