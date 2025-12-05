@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+
+.user {
+  margin-top: 4px;
+  font-size: 1.1rem;
+}
+
+.welcome-text{
+  color: #3e5fff; 
+}
+
+.header-right {
+  font-weight: 500;
+}

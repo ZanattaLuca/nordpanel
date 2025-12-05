@@ -11,6 +11,9 @@ export class Home {
 
   countries = '';
   account = '';
+  user = 'Mario Rossi';
+  status = 'Connected';
+
 
   constructor(private nordvpn: NordvpnService, private cdr: ChangeDetectorRef) {}
 
