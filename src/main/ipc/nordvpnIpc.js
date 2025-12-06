@@ -1,5 +1,5 @@
 const { ipcMain } = require('electron');
-const { getCountries, getAccount } = require('../services/nordvpnService');
+const { getCountries, getAccount, nordVpnStatus } = require('../services/nordvpnService');
 
 function registerNordvpnHandlers() {
   ipcMain.handle('nordvpn:countries', async () => {
@@ -8,6 +8,10 @@ function registerNordvpnHandlers() {
 
   ipcMain.handle('nordvpn:account', async () => {
     return await getAccount();
+  });
+
+  ipcMain.handle('nordvpn:status', async () => {
+    return await nordVpnStatus();
   });
 }
 

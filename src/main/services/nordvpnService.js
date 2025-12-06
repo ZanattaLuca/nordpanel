@@ -24,7 +24,12 @@ async function getAccount() {
   return execNordvpn('account');
 }
 
+async function nordVpnStatus() {
+  return execNordvpn('status');
+}
+
 module.exports = {
   getCountries,
   getAccount,
+  nordVpnStatus
 };

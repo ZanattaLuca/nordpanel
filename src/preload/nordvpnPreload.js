@@ -8,4 +8,8 @@ contextBridge.exposeInMainWorld('nordvpn', {
   account: async () => {
     return await ipcRenderer.invoke('nordvpn:account');
   },
+
+  nordVpnStatus: async () => {
+    return await ipcRenderer.invoke('nordvpn:status');
+  },
 });
