@@ -5,7 +5,7 @@
   </div>
 
   <div class="header-right">
-    {{ status }}
+    {{ (status$ | async)?.status }}
   </div>
 </div>
 
@@ -14,3 +14,6 @@
 
 <button (click)="showAccount()">Show account info</button>
 <pre>{{ account }}</pre>
+
+
+<button (click)="nordVpnStatus()">Show nordVpnStatus info</button>

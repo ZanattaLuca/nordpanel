@@ -5,6 +5,7 @@ declare global {
     nordvpn: {
       getCountries: () => Promise<string>;
       account: () => Promise<string>;
+      nordVpnStatus: () => Promise<string>;
     };
   }
 }

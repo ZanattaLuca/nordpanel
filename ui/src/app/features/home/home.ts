@@ -1,21 +1,31 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { NordvpnService } from '../../services/nordvpn.service';
+import { NordvpnStatusService } from '../../services/nordvpn.status.service';
+import { Observable } from 'rxjs';
+import { Status } from '../../models/status.interface';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
 
+  status$!: Observable<Status>;
+  
   countries = '';
   account = '';
   user = 'Mario Rossi';
   status = 'Connected';
 
+  constructor(private nordvpn: NordvpnService, private nordvpnStatusService: NordvpnStatusService, private cdr: ChangeDetectorRef) {
+  }
 
-  constructor(private nordvpn: NordvpnService, private cdr: ChangeDetectorRef) {}
+  ngOnInit(): void {
+    this.status$ = this.nordvpnStatusService.status$;
+  }
 
   showCountries() {
     this.countries = 'Running "nordvpn countries"...';
@@ -46,5 +56,11 @@ export class Home {
         console.error(err);
       },
     });
+  }
+
+  nordVpnStatus(): any {
+    this.account = 'Running "nordvpn account"...';
+
+    this.nordvpnStatusService.refreshStatus()
   }
 }
