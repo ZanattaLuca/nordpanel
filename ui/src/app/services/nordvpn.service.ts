@@ -11,7 +11,9 @@ export class NordvpnService {
     return from(window.nordvpn.getCountries());
   }
 
-  getAccount(): Observable<string> {
-    return from(window.nordvpn.account());
-  }
+getAccount(): Observable<string> {
+  const account = from(window.nordvpn.account());
+  console.log(account);
+  return account;
+}
 }

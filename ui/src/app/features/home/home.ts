@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { NordvpnService } from '../nordvpn.service';
+import { NordvpnService } from '../../services/nordvpn.service';
 
 @Component({
   selector: 'app-home',
