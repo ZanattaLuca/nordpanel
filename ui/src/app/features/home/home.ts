@@ -69,4 +69,13 @@ export class Home {
     this.account = 'Running "nordvpn account"...';
 
   }
+
+
+  disconnect(){
+    console.log('function: disconnect')
+  }
+
+  quickConnectItaly(){
+    console.log('function: quickConnectItaly')
+  }
 }

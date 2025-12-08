@@ -1,19 +1,42 @@
-<div class="header">
-  <div class="header-left">
+<div class="top-component">
+  <div class="top-component-left">
     <h1 class="welcome-text">Welcome</h1>
     <div class="user">{{ user }}</div>
   </div>
 
-  <div class="header-right">
-    {{ (status$ | async)?.status }}
-  </div>
+  @if (status$ | async; as vpnStatus) {
+    <div class="status-container">
+
+      @if (!vpnStatus.isLoaded) {
+        <div class="status-block loading">
+          <div class="status-indicator">
+            Checking...
+          </div>
+        </div>
+
+      } @else if (vpnStatus.status === 'Disconnected') {
+        <div class="status-block disconnected">
+          <div class="status-indicator">
+            <span class="dot red"></span> Disconnected
+          </div>
+
+          <button mat-flat-button color="primary" class="status-button" (click)="quickConnectItaly()">
+            <mat-icon>flash_on</mat-icon> Quick Connect
+          </button>
+        </div>
+
+      } @else {
+        <div class="status-block connected">
+          <div class="status-indicator">
+            <span class="dot green"></span> Connected
+          </div>
+
+          <button mat-flat-button color="accent" class="status-button" (click)="disconnect()">
+            <mat-icon>link_off</mat-icon> Disconnect
+          </button>
+        </div>
+      }
+
+    </div>
+  }
 </div>
-
-<button (click)="showCountries()">Show NordVPN countries</button>
-<pre>{{ countries }}</pre>
-
-<button (click)="showAccount()">Show account info</button>
-<pre>{{ account }}</pre>
-
-
-<button (click)="nordVpnStatus()">Show nordVpnStatus info</button>
