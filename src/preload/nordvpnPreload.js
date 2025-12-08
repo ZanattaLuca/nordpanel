@@ -12,4 +12,10 @@ contextBridge.exposeInMainWorld('nordvpn', {
   nordVpnStatus: async () => {
     return await ipcRenderer.invoke('nordvpn:status');
   },
+  nordvpnConnect: async (country) => {
+    return await ipcRenderer.invoke('nordvpn:connect', country);
+  },
+  nordvpnDisconnect: async () => {
+    return await ipcRenderer.invoke('nordvpn:disconnect');
+  }
 });

@@ -28,8 +28,19 @@ async function nordVpnStatus() {
   return execNordvpn('status');
 }
 
+async function nordvpnConnect(country) {
+  const connectionTarget = country ? country : '';
+  return execNordvpn(`connect ${connectionTarget}`);
+}
+
+async function nordvpnDisconnect() {
+  return execNordvpn('disconnect');
+}
+
 module.exports = {
   getCountries,
   getAccount,
-  nordVpnStatus
+  nordVpnStatus,
+  nordvpnConnect,
+  nordvpnDisconnect
 };
