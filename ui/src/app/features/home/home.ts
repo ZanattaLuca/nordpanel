@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NordvpnConnectionService } from '../../services/nordvpn.connection.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,10 @@ export class Home {
   account = '';
   user = 'Mario Rossi';
 
-  constructor(private nordvpn: NordvpnService, private nordvpnStatusService: NordvpnStatusService, private cdr: ChangeDetectorRef) {
+  constructor(private nordvpn: NordvpnService, 
+    private nordvpnStatusService: NordvpnStatusService, 
+    private cdr: ChangeDetectorRef,
+    private nordvpnConnectionService: NordvpnConnectionService) {
   }
 
   ngOnInit(): void {
@@ -70,12 +74,11 @@ export class Home {
 
   }
 
-
   disconnect(){
-    console.log('function: disconnect')
+    this.nordvpnConnectionService.disconnect()
   }
 
   quickConnectItaly(){
-    console.log('function: quickConnectItaly')
+    this.nordvpnConnectionService.connect('italy')
   }
 }
