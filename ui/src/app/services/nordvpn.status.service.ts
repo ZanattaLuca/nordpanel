@@ -1,19 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Status } from '../models/status.interface'
-import { Subject, from, map } from 'rxjs';
+import { Observable, Subject, from, map, shareReplay, startWith, switchMap, timer } from 'rxjs';
+
+
+const INITIAL_STATE: Status = {
+  status: 'Checking...',
+  server: '',
+  country: '',
+  city: '',
+  isLoaded: false
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class NordvpnStatusService {
-    status$ = new Subject<Status>();
+
+    status$: Observable<Status> = timer(0, 5000).pipe(
+
+        switchMap(() => from(window.nordvpn.nordVpnStatus())),
+        map(raw => this.parseStatus(raw)),
+        startWith(INITIAL_STATE),
+
+        shareReplay(1) 
+    );
 
     private parseStatus(raw: any): Status {
     const result: Status = {
-        status: 'Disconnected',
+        status: '',
         server: '',
         country: '',
         city: '',
+        isLoaded: true
     };
 
     if (typeof raw !== 'string') {
@@ -49,11 +67,4 @@ export class NordvpnStatusService {
     }
 
 
-    refreshStatus(): any {
-        from(window.nordvpn.nordVpnStatus())
-        .pipe(map(raw => this.parseStatus(raw)))
-        .subscribe((status) => {this.status$.next(status)
-            console.log(status)
-        });
-    }
 }

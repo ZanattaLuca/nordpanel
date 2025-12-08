@@ -3,4 +3,5 @@ export interface Status {
     server: string;
     country: string;
     city: string;
+    isLoaded: boolean;
 }

@@ -4,10 +4,18 @@ import { NordvpnStatusService } from '../../services/nordvpn.status.service';
 import { Observable } from 'rxjs';
 import { Status } from '../../models/status.interface';
 import { AsyncPipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-home',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,
+    MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatButtonModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -18,7 +26,6 @@ export class Home {
   countries = '';
   account = '';
   user = 'Mario Rossi';
-  status = 'Connected';
 
   constructor(private nordvpn: NordvpnService, private nordvpnStatusService: NordvpnStatusService, private cdr: ChangeDetectorRef) {
   }
@@ -61,6 +68,5 @@ export class Home {
   nordVpnStatus(): any {
     this.account = 'Running "nordvpn account"...';
 
-    this.nordvpnStatusService.refreshStatus()
   }
 }
