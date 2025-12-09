@@ -17,5 +17,8 @@ contextBridge.exposeInMainWorld('nordvpn', {
   },
   nordvpnDisconnect: async () => {
     return await ipcRenderer.invoke('nordvpn:disconnect');
-  }
+  },
+  getAllCities: async () => {
+    return await ipcRenderer.invoke('nordvpn:allcities');
+  },
 });
