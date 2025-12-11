@@ -21,4 +21,13 @@ contextBridge.exposeInMainWorld('nordvpn', {
   getAllCities: async () => {
     return await ipcRenderer.invoke('nordvpn:allcities');
   },
+  startFetchAllCities: () => {
+    ipcRenderer.send('nordvpn:fetch-all-cities');
+  },
+  onAllCitiesProgress: (callback) => {
+    ipcRenderer.removeAllListeners('nordvpn:all-cities-progress'); 
+    ipcRenderer.on('nordvpn:all-cities-progress', (event, progress) => {
+      callback(progress);
+    });
+  }
 });

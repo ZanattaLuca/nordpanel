@@ -24,6 +24,12 @@ function registerNordvpnHandlers() {
   ipcMain.handle('nordvpn:allcities', async () => {
     return await getAllCities();
   });
+  ipcMain.on('nordvpn:fetch-all-cities', (event) => {
+    const progressReporter = (progress) => {
+      event.sender.send('nordvpn:all-cities-progress', progress);
+    };
+    getAllCities(progressReporter); 
+  });
 }
 
 module.exports = {
